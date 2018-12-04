@@ -1,0 +1,25 @@
+<!--New page that shows form for thrift to be added-->
+<% include ./partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron">
+        <h1 class="display-4 form-header">Add a second hand shop!</h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" method="POST" action="/thrifts">
+            <!--Name of thrift-->
+            <input class="form-control" type="text" placeholder="Name" name="name">
+            <!--Image of thrift store-->
+            <input class="form-control" type="text" placeholder="Image URL" name="image">
+            <!--Description of thrift store-->
+            <input class="form-control" type="text" placeholder="Short description of the seller" name="desc">
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Submit!</button>
+        </form>
+    </div>
+</div>
+
+
+
+<% include ./partials/footer %>

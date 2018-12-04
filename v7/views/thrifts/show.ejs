@@ -1,0 +1,53 @@
+<% include ../partials/header %>
+
+<div class="container single-container">
+    <h1><%= thrift.name %></h1>
+    <img src="<%= thrift.image %>" alt="<%= thrift.name %>" />
+    <p class="desc"><%= thrift.desc %></p>
+    <p class="desc"><em>Submitted by <%= thrift.author.username %></em></p>
+    <!--Buttons to edit + delete comments-->
+    <% if (currentUser && thrift.author.id.equals(currentUser._id)) { %>
+        <div class="button-group">
+            <!--Edit-->
+            <a class="btn btn-warning white-txt" href="/thrifts/<%= thrift._id %>/edit">Edit</a>
+            <!--Delete-->
+            <form class="single-form" action="/thrifts/<%= thrift._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        </div>
+    <% } %>
+    <!--List of what is sold-->
+    
+    <div class="comment-container">
+        <div class="comment-header">
+            <h3>Comments</h3>
+            <!--Add a comment-->
+            <a class="main-button mb-single main-button-sm" href="/thrifts/<%= thrift._id %>/comments/new">Add a comment</a>
+        </div>
+        <hr>
+        <% thrift.comments.forEach(function(comment) { %>
+            <div class="comment">
+                <!--Author-->
+                <p><strong><%= comment.author.username %>:</strong></p>
+                <!--Text-->
+                <p><%= comment.text %></p>
+                <!--Date posted-->
+                <span class="date"><em>Posted </em></span>
+                <!--Buttons to edit + delete comments-->
+                <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                    <div class="button-group">
+                        <!--Edit-->
+                        <a href="/thrifts/<%= thrift._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                        <!--Delete-->
+                        <form method="POST" action="/thrifts/<%= thrift._id %>/comments/<%= comment._id %>?_method=DELETE">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        <% }); %>
+    </div>
+    <a class="main-button" href="/thrifts">Go back</a>
+</div>
+
+<% include ../partials/footer %>

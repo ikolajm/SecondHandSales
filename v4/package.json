@@ -1,0 +1,17 @@
+{
+  "name": "thriftstoreapp",
+  "version": "1.0.0",
+  "description": "Application built in a yelp-like manner to show thrift stores/garage sales in certain areas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Ikola",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12"
+  }
+}

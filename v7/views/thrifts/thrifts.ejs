@@ -1,0 +1,32 @@
+<!--Index page that shows all thrifts being posted-->
+<% include ../partials/header %>
+
+<div class="container thrift-container">
+  
+  <div class="jumbotron thrift-jumbo">
+    <h1 class="display-5 thrift-header">Sellers to choose from:</h1>
+    <p>These sellers have been added by fellow users to say they are worth your time!</p>
+    <p class="lead">
+      <a class="btn btn-success main-button" href="/thrifts/new" role="button">Add new seller</a>
+    </p>
+  </div>
+  
+  <div class="row text-center">
+        <% thrifts.forEach(function(thrift){ %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= thrift.image %>" alt="<%= thrift.name %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= thrift.name %></h5>
+                    <a href="/thrifts/<%= thrift._id %>" class="btn btn-success main-button">View Seller</a>
+                  </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+  
+</div>
+
+
+
+<% include ../partials/footer %>

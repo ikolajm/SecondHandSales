@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+<div class="container single-container">
+    <h1><%= thrift.name %></h1>
+    <img src="<%= thrift.image %>" alt="<%= thrift.name %>" />
+    <p class="desc"><%= thrift.desc %></p>
+    <!--List of what is sold-->
+    
+    <div class="comment-container">
+        <div class="comment-header">
+            <h3>Comments</h3>
+            <!--Add a comment-->
+            <a class="main-button mb-single" href="/thrifts/<%= thrift._id %>/comments/new">Add a comment</a>
+        </div>
+        <hr>
+        <% thrift.comments.forEach(function(comment) { %>
+            <div class="comment">
+                <!--Author-->
+                <p><strong><%= comment.author %>:</strong></p>
+                <!--Text-->
+                <p><%= comment.text %></p>
+                <!--Date posted-->
+                <span class="date"><em>Posted </em></span>
+                <!--Buttons to edit + delete comments-->
+                <div class="button-group">
+                    <!--Edit-->
+                    
+                    <!--Delete-->
+                    
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <a class="main-button" href="/thrifts">Go back</a>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,22 @@
+<!--New page that shows form for account to be made-->
+<% include ./partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron">
+        <h1 class="display-4 form-header">Register for an account!</h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" method="POST" action="/register">
+            <!--Comment-->
+            <input class="form-control" type="text" placeholder="Username" name="username">
+            <!--Name-->
+            <input class="form-control" type="password" placeholder="Password" name="password">
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Sign Up!</button>
+        </form>
+        <a href="/thrifts">Go back</a>
+    </div>
+</div>
+
+<% include ./partials/footer %>

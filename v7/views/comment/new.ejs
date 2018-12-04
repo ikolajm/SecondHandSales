@@ -1,0 +1,20 @@
+<!--New page that shows form for comment to be added-->
+<% include ../partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron">
+        <h1 class="display-4 form-header">Add a comment to <%= thrift.name %></h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" method="POST" action="/thrifts/<%= thrift._id %>/comments">
+            <!--Comment-->
+            <input class="form-control" type="text" placeholder="Comment" name="comment[text]">
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Submit!</button>
+        </form>
+        <a href="/thrifts/<%= thrift._id %>">Go back</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>

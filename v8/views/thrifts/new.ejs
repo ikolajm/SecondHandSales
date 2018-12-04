@@ -1,0 +1,102 @@
+<!--New page that shows form for thrift to be added-->
+<% include ../partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron thrift-jumbo">
+        <h1 class="display-5 form-header">Add a second hand shop!</h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" method="POST" action="/thrifts">
+            <!--Name of thrift-->
+            <label for="name">Name</label>
+            <input id="name" class="form-control" type="text" placeholder="Name" name="thrift[name]" required>
+            <!--Image of thrift store-->
+            <label for="image">Image</label>
+            <input id="image" class="form-control" type="text" placeholder="Image URL" name="thrift[image]" required>
+            <!--Description of thrift store-->
+            <label for="desc">Description</label>
+            <input id="desc" class="form-control" type="text" placeholder="Short description of the seller" name="thrift[desc]" required>
+            
+            <!--Address-->
+            <div class="form-group address">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="thrift[address]" required>
+            </div>
+            <!--City-->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity" name="thrift[city]" required>
+                </div>
+                <!--State-->
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="inputState" class="form-control" name="thrift[state]" required>
+                    <option selected>Choose a state</option>
+                    <!--STATE LIST-->
+                    <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Conneticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Luisiana</option><option>Maine</option><option>Maryland</option><option>Massachusettes</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Dakota</option><option>Tennesee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                  </select>
+                </div>
+                <!--ZIP-->
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip" name="thrift[zip]" required>
+                </div>
+             </div>
+            
+            <!--Hours-->
+            <div class="row">
+                <div class="col">
+                    <label class="time" for="open">Opens at:</label>
+                  <input id="open" type="time" name="thrift[open]" class="form-control" required>
+                </div>
+                <div class="col">
+                    <label class="time" for="close">Closes at:</label>
+                  <input id="close" type="time" name="thrift[close]" class="form-control" required>
+                </div>
+            </div>
+            
+            <!--Price-->
+            <select class="custom-select" name="thrift[price]" required>
+              <option selected>Select a price range for this posting</option>
+              <option value="cheap">Cheap</option>
+              <option value="moderate">Moderate</option>
+              <option value="expensive">Expensive</option>
+            </select>
+            
+            <!--What is being sold?-->
+            <label for="check-container">What is sold there?</label>
+            <div id="check-container">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="clothesCheck" value="Clothes" name="thrift[clothes]">
+                  <label class="form-check-label" for="clothesCheck">Clothes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="anitqueCheck" value="Antiques" name="thrift[antiques]">
+                  <label class="form-check-label" for="anitqueCheck">Antiques</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="furnitureCheck" value="Furniture" name="thrift[furniture]">
+                  <label class="form-check-label" for="furnitureCheck">Furniture</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="artCheck" value="Art" name="thrift[art]">
+                  <label class="form-check-label" for="artCheck">Art + Decor</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="electronicCheck" value="Electronics/Appliances" name="thrift[electronics]">
+                  <label class="form-check-label" for="electronicCheck">Electronics/Appliances</label>
+                </div>
+            </div>
+            
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Submit!</button>
+        </form>
+        <a href="/thrifts">Go back</a>
+    </div>
+</div>
+
+
+
+<% include ../partials/footer %>

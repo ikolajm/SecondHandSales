@@ -1,0 +1,20 @@
+<!--New page that shows form for comment to be edited-->
+<% include ../partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron thrift-jumbo">
+        <h1 class="display-5 form-header">Edit your comment</h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" class="auth" method="POST" action="/thrifts/<%= thrift_id %>/comments/<%= comment._id %>?_method=PUT">
+            <!--Comment-->
+            <input class="form-control" type="text" value="<%= comment.text %>" name="comment[text]">
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Submit!</button>
+        </form>
+        <a class="btn btn-sm btn-danger" href="/thrifts/<%= thrift_id %>">Go back</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>

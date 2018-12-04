@@ -1,0 +1,26 @@
+<!--New page that shows form for thrift to be edited-->
+<% include ../partials/header %>
+
+<div class="container form-container">
+    <div class="jumbotron">
+        <h1 class="display-4 form-header">Edit your entry for <%= thrift.name %></h1>
+    </div>
+    
+    <div class="container">
+        <form id="form" method="POST" action="/thrifts/<%= thrift._id %>?_method=PUT">
+            <!--Name of thrift-->
+            <input class="form-control" type="text" value="<%= thrift.name %>" name="thrift[name]">
+            <!--Image of thrift store-->
+            <input class="form-control" type="text" value="<%= thrift.image %>" name="thrift[image]">
+            <!--Description of thrift store-->
+            <input class="form-control" type="text" value="<%= thrift.desc %>" name="thrift[desc]">
+            <!--Submit-->
+            <button type="submit" class="btn btn-success main-button">Submit!</button>
+        </form>
+        <a href="/thrifts/<%= thrift._id %>">Go back</a>
+    </div>
+</div>
+
+
+
+<% include ../partials/footer %>

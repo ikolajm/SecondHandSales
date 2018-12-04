@@ -1,0 +1,135 @@
+<% include ../partials/header %>
+
+<div class="container single-container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h1><%= thrift.name %></h1>
+            <img src="<%= thrift.image %>" alt="<%= thrift.name %>" />
+            <div class="desc-container">
+                <p class="desc"><%= thrift.desc %></p>
+            </div>
+        </div>
+            
+            <!--Drop sidemenu here on small screens-->
+            <div class="col-lg-3">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <!--Price-->
+                     <div class="price-container">
+                        <h5>Price index</h5>
+                        <div class="prices">
+                            <p>
+                                <% if (thrift.price === "cheap") { %>
+                                 <i class="fas fa-dollar-sign"></i><p>- Low prices</p>
+                                <% } %>
+                                <% if (thrift.price === "moderate") { %>
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <i class="fas fa-dollar-sign"></i><p>- Moderate prices</p>
+                                <% } %>
+                                <% if (thrift.price === "expensive") { %>
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <i class="fas fa-dollar-sign"></i> <p>- Expensive prices</p>
+                                <% } %>
+                            </p>
+                        </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                      <!--Address-->
+                        <div class="address-container">
+                            <h5>Address</h5>
+                            <p><%= thrift.address %>, <%= thrift.city %>, <%= thrift.state %> <%= thrift.zip %></p>
+                        </div>
+                  </li>
+                  <li class="list-group-item">
+                      <!--Hours-->
+                        <div class="time-container">
+                            <h5>Hours of operation</h5>
+                            <p><%= thrift.open %> - <%= thrift.close %></p>
+                        </div>
+                  </li>
+                  <li class="list-group-item">
+                      <!--List of what is sold-->
+                        <div class="sale-list" >
+                            <h5>Inventory includes</h5>
+                            <ul class="items">
+                                <% if (thrift.clothes) { %>
+                                    <li class="sale-item"><%= thrift.clothes %></li>
+                                <% } %>
+                                <% if (thrift.furniture) { %>
+                                    <li class="sale-item"><%= thrift.furniture %></li>
+                                <% } %>
+                                <% if (thrift.antiques) { %>
+                                    <li class="sale-item"><%= thrift.antiques %></li>
+                                <% } %>
+                                <% if (thrift.art) { %>
+                                    <li class="sale-item"><%= thrift.art %></li>
+                                <% } %>
+                                <% if (thrift.electronics) { %>
+                                    <li class="sale-item"><%= thrift.electronics %></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </li>
+                 </ul>
+             </div>
+            
+            
+            <div class="col-lg-9">
+                <!--Subitted by-->
+            <p class="submission"><em>Submitted by <%= thrift.author.username %>, <%= moment(thrift.createdAt).fromNow() %></em></p>
+            <!--Buttons to edit + delete comments-->
+            <% if (currentUser && thrift.author.id.equals(currentUser._id)) { %>
+                <div class="button-group">
+                    <!--Edit-->
+                    <a class="btn btn-warning white-txt" href="/thrifts/<%= thrift._id %>/edit">Edit Posting</a>
+                    <!--Delete-->
+                    <form class="single-form" action="/thrifts/<%= thrift._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger" type="submit">Delete Posting</button>
+                    </form>
+                </div>
+            <% } %>
+            
+            
+            
+            
+            <!--COMMENTS-->
+            <div class="comment-container">
+                <div class="comment-header">
+                    <h3>Comments</h3>
+                    <!--Add a comment-->
+                    <a class="main-button mb-single main-button-sm" href="/thrifts/<%= thrift._id %>/comments/new">Add a comment</a>
+                </div>
+                <hr>
+                <% thrift.comments.forEach(function(comment) { %>
+                    <div class="comment">
+                        <!--Author-->
+                        <p><strong><%= comment.author.username %>:</strong></p>
+                        <!--Text-->
+                        <p><%= comment.text %></p>
+                        <!--Date posted-->
+                        <span class="date"><em>Posted <%= moment(comment.createdAt).fromNow() %></em></span>
+                        <!--Buttons to edit + delete comments-->
+                        <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                            <div class="button-group">
+                                <!--Edit-->
+                                <a class="btn btn-warning white-txt button-sm" href="/thrifts/<%= thrift._id %>/comments/<%= comment._id %>/edit">Edit Comment</a>
+                                <!--Delete-->
+                                <form method="POST" action="/thrifts/<%= thrift._id %>/comments/<%= comment._id %>?_method=DELETE">
+                                    <button class="btn btn-danger button-sm" type="submit">Delete Comment</button>
+                                </form>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+            <a class="btn btn-sm btn-danger" href="/thrifts">Go back</a>
+            </div>
+            
+        </div>
+            
+</div>
+
+
+<% include ../partials/footer %>

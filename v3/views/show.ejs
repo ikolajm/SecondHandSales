@@ -1,0 +1,15 @@
+<% include ./partials/header %>
+
+<h1><%= thrift.name %></h1>
+<img src="<%= thrift.image %>" alt="<%= thrift.name %>" />
+<p><%= thrift.desc %></p>
+<div class="container">
+    <% thrift.comments.forEach(function(comment) { %>
+        <div>
+            <p><%= comment.text %></p>
+            <p>Written by: <%= comment.author %></p>
+        </div>
+    <% }); %>
+</div>
+
+<% include ./partials/footer %>
